@@ -32,7 +32,9 @@ class CameraManager(object):
     def get_next_frame(self):
         with picamera.array.PiRGBArray(self.camera) as output:
             self.camera.capture(output, 'rgb')
+            print(output)
+            print(output.array)
             print('Captured %dx%d image' % (
                 output.array.shape[1], output.array.shape[0]))
-            print(output.shape)
-            return output
+            print(output.array.shape)
+            return output.array
