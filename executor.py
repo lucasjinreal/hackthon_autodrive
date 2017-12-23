@@ -22,6 +22,7 @@ this class will execute the commands
 import os
 from src.car import Car
 from planner import Plan
+import time
 
 
 class Executor(object):
@@ -35,4 +36,6 @@ class Executor(object):
         assert isinstance(plan, Plan), 'plan must be plan'
         l_speed = plan.l_speed
         r_speed = plan.r_speed
+        hold_time = plan.time
         car.set_duty_cycle(l_speed, r_speed)
+        time.sleep(hold_time)
