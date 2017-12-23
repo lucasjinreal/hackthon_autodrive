@@ -73,21 +73,21 @@ class Planner(object):
             # if obstacle, stop 3 seconds
             return Plan(l_speed=0, r_speed=0, time=3)
         else:
-            if time_flag == 1:
+            if time_flag == 0:
                 return self.forward(time=1.6)
+            elif time_flag == 1:
+                return self.plan_turn_l_little
             elif time_flag == 2:
-                return self.plan_turn_l_little
-            elif time_flag == 3:
                 return self.forward(time=6)
-            elif time_flag == 4:
+            elif time_flag == 3:
                 return self.plan_turn_l_little
-            elif time_flag == 5:
+            elif time_flag == 4:
                 return self.forward(1)
+            elif time_flag == 5:
+                return self.plan_turn_l_little
             elif time_flag == 6:
                 return self.plan_turn_l_little
             elif time_flag == 7:
-                return self.plan_turn_l_little
-            elif time_flag == 8:
                 return self.plan_turn_l_little
 
      # @staticmethod
