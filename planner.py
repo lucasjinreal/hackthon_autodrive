@@ -54,8 +54,12 @@ class Planner(object):
         return Plan(l_speed=speed, r_speed=speed, time=time)
 
     @staticmethod
+    def backward(speed=-80, time=2):
+        return Plan(l_speed=speed, r_speed=speed, time=time)
+
+    @staticmethod
     def turn_left_litter():
-        return Plan(l_speed=50, r_speed=100, time=4)
+        return Plan(l_speed=50, r_speed=100, time=3)
 
     def get_next_plan(self, time_flag, observation):
         assert isinstance(observation, Observation)
@@ -66,12 +70,12 @@ class Planner(object):
             return Plan(l_speed=0, r_speed=0, time=3)
         else:
             if time_flag == 1:
-                return self.forward(time=5)
+                return self.forward(time=2)
             elif time_flag == 2:
                 return self.turn_left_litter()
             elif time_flag == 3:
                 return self.forward(time=5)
             elif time_flag == 4:
-                return self.forward(time=5)
+                return self.backward(time=5)
 
 
