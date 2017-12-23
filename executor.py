@@ -32,12 +32,16 @@ class Executor(object):
         self.local_record_f = 'record.pkl'
         self.all_plans = list()
 
+    @staticmethod
+    def reverse_plan(plan):
+        return Plan(-plan.l_speed, -plan.r_speed, plan.time)
+
     def go_back_home(self, car):
         with open(self.local_record_f, 'rb') as f:
             all_plans = pickle.load(f)
         if len(all_plans) >= 1:
-            for p in all_plans:
-                self.execute_plan(car, plan=p)
+            for p in reversed(all_plans):
+                self.execute_plan(car, plan=self.reverse_plan(p))
 
     def save_operation_to_local(self):
         with open(self.local_record_f, 'wb') as f:
