@@ -25,7 +25,7 @@ class Car:
         GPIO.setwarnings(False)
 
         self.PWM_HZ = pwm_hz
-        settings_f = os.path.join(os.path.abspath(__file__), 'settings.txt')
+        settings_f = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'settings.txt')
         print("what is fucking settings:", settings_f)
         if os.path.exists(settings_f):
             print('fucking file exist!')
@@ -39,7 +39,7 @@ class Car:
             self.leftspeed = self.halfL
             self.rightspeed = self.halfR
         else:
-            print('fucking file exist!')
+            print('fucking file not exist!')
             sys.stderr.write('You need to run calibrate first! ')
             self.__del__()
 
