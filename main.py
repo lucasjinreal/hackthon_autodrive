@@ -33,7 +33,7 @@ def fuck_run():
     try:
         while True:
             print('forward 4 seconds')
-            car.set_duty_cycle(left_duty=140, right_duty=140)
+            car.set_duty_cycle(left_duty=80, right_duty=80)
             time.sleep(14)
 
             print('left 4 seconds')
