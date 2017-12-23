@@ -50,7 +50,7 @@ class Planner(object):
         cv2.imwrite(lane_f, lane_res)
 
     @staticmethod
-    def forward(speed=100, time=2):
+    def forward(speed=80, time=2):
         return Plan(l_speed=speed, r_speed=speed, time=time)
 
     @staticmethod
@@ -65,13 +65,13 @@ class Planner(object):
             # if obstacle, stop 3 seconds
             return Plan(l_speed=0, r_speed=0, time=3)
         else:
-            if time_flag == 0:
+            if time_flag == 1:
                 return self.forward(time=5)
-            elif time_flag == 1:
-                return self.turn_left_litter()
             elif time_flag == 2:
-                return self.forward(time=5)
+                return self.turn_left_litter()
             elif time_flag == 3:
+                return self.forward(time=5)
+            elif time_flag == 4:
                 return self.forward(time=5)
 
 
