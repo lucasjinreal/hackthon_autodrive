@@ -33,15 +33,15 @@ def fuck_run():
     try:
         while True:
             print('forward 4 seconds')
-            car.set_speed(left_speed=10, right_speed=10)
+            car.set_speed(left_speed=140, right_speed=140)
             time.sleep(4)
 
             print('left 4 seconds')
-            car.set_speed(left_speed=5, right_speed=15)
+            car.set_speed(left_speed=100, right_speed=150)
             time.sleep(4)
 
             print('forward 10 seconds')
-            car.set_speed(left_speed=15, right_speed=15)
+            car.set_speed(left_speed=-100, right_speed=-100)
             time.sleep(10)
 
     except KeyboardInterrupt:

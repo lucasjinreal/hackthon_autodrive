@@ -26,9 +26,8 @@ class Car:
 
         self.PWM_HZ = pwm_hz
         settings_f = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'settings.txt')
-        print("what is fucking settings:", settings_f)
         if os.path.exists(settings_f):
-            print('fucking file exist!')
+            print('start setting car!')
             setting = np.loadtxt(settings_f)
             self.halfL = setting[0][1] + setting[0][0] * 50
             self.fullL = setting[0][1] + setting[0][0] * 100
