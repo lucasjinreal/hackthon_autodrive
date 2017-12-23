@@ -20,7 +20,7 @@
 this file is the main logic of auto-drive
 """
 from src.car import Car
-
+import time
 
 def test():
 
@@ -30,9 +30,20 @@ def test():
 
 def fuck_run():
     car = Car()
-    car.set_speed()
+    while True:
+
+        car.set_speed(left_speed=10, right_speed=10)
+        time.sleep(4)
+
+        car.set_speed(left_speed=5, right_speed=15)
+        time.sleep(4)
+
+        car.set_speed(left_speed=15, right_speed=15)
+        time.sleep(10)
+
+
 
 
 
 if __name__ == '__main__':
-    test()
+    fuck_run()
