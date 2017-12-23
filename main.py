@@ -44,7 +44,9 @@ def fuck_run():
         i = 0
         while True:
             i += 1
+
             print('\n')
+            print('current frame flag: ', i)
             print('-> Make observations.')
             observations = observer.get_observations()
             print('-> Do next planning.')
