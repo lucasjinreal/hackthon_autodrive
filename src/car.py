@@ -26,8 +26,9 @@ class Car:
 
         self.PWM_HZ = pwm_hz
         settings_f = os.path.join(os.path.abspath(__file__), 'settings.txt')
-	print("what is fucking settings:", settings_f)
+        print("what is fucking settings:", settings_f)
         if os.path.exists(settings_f):
+            print('fucking file exist!')
             setting = np.loadtxt(settings_f)
             self.halfL = setting[0][1] + setting[0][0] * 50
             self.fullL = setting[0][1] + setting[0][0] * 100
@@ -38,6 +39,7 @@ class Car:
             self.leftspeed = self.halfL
             self.rightspeed = self.halfR
         else:
+            print('fucking file exist!')
             sys.stderr.write('You need to run calibrate first! ')
             self.__del__()
 
