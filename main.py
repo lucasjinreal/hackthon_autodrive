@@ -21,6 +21,11 @@ this file is the main logic of auto-drive
 """
 from src.car import Car
 import time
+from camera_manager import CameraManager
+from planner import Planner
+from observer import Observer
+from executor import Executor
+
 
 def test():
 
@@ -30,32 +35,23 @@ def test():
 
 def fuck_run():
     car = Car()
+
+    planner = Planner()
+    observer = Observer()
+    executor = Executor()
+
     try:
+        i = 0
         while True:
-            print('forward 4 seconds')
-            car.set_duty_cycle(left_duty=80, right_duty=80)
-            time.sleep(14)
+            i += 1
+            print('-> Make observations.')
+            observations = observer.get_observations()
 
-            print('left 4 seconds')
-            car.set_speed(left_speed=100, right_speed=150)
-            time.sleep(4)
+            print('-> Do next planning.')
+            next_plan = planner.get_next_plan(time_flag=i, observations=observations)
 
-            print('forward 10 seconds')
-            car.set_speed(left_speed=-100, right_speed=-100)
-            time.sleep(10)
-
-        # while True:
-        #     print('forward 4 seconds')
-        #     car.set_speed(left_speed=140, right_speed=140)
-        #     time.sleep(4)
-        #
-        #     print('left 4 seconds')
-        #     car.set_speed(left_speed=100, right_speed=150)
-        #     time.sleep(4)
-        #
-        #     print('forward 10 seconds')
-        #     car.set_speed(left_speed=-100, right_speed=-100)
-        #     time.sleep(10)
+            print('-> Execute plan.')
+            executor.execute_plan(car, next_plan)
 
     except KeyboardInterrupt:
         car.__del__()

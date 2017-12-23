@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-# file: camera_manager.py
+# file: executor.py
 # author: JinTian
-# time: 23/12/2017 11:19 AM
+# time: 23/12/2017 12:47 PM
 # Copyright 2017 JinTian. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,16 +16,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ------------------------------------------------------------------------
-from picamera import PiCamera
+"""
+this class will execute the commands
+"""
+import os
+from src.car import Car
+from planner import Plan
 
 
-class CameraManager(object):
+class Executor(object):
 
     def __init__(self):
-        self.camera = PiCamera()
-        self.camera.resolution = (1024, 768)
-        self.camera.start_preview()
-        print('-> Camera init..')
+        pass
 
-    def get_next_frame(self):
-        return self.camera.capture
+    @staticmethod
+    def execute_plan(car, plan):
+        assert isinstance(car, Car), 'car must be car'
+        assert isinstance(plan, Plan), 'plan must be plan'
+        l_speed = plan.l_speed
+        r_speed = plan.r_speed
+        car.set_duty_cycle(l_speed, r_speed)
