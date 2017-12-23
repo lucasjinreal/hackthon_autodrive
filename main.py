@@ -46,7 +46,6 @@ def fuck_run():
         hold_times = 0
         i = 0
         while True:
-            print('\n')
             print('current frame flag: ', i)
             print('-> Make observations.')
             observations = observer.get_observations()
@@ -54,19 +53,20 @@ def fuck_run():
             next_plan = planner.get_next_plan(time_flag=i, observation=observations)
             print('-> Execute plan.')
 
-            i += 1
             if i == 0:
                 print('---- Car start to run! ------')
                 hold_times = next_plan.time * frequent
             else:
+                i += 0.01
                 if i > hold_times:
+                    print('\n')
                     print('-> New a plan.')
                     executor.execute_plan(car, next_plan)
                     i = 0
                     hold_times = next_plan.time * frequent
                 else:
                     pass
-                    print('*** Normal cruise...')
+                    print('*** Normal cruise... current work: {}%'.format((i/hold_times)*100))
             # executor.execute_plan(car, next_plan)
 
     except KeyboardInterrupt:

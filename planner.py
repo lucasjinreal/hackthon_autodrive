@@ -47,9 +47,8 @@ class Planner(object):
             os.makedirs(frame_dir)
         if not os.path.exists(lane_res_dir):
             os.makedirs(lane_res_dir)
-        i = time_flag % 1000
-        frame_f = os.path.join(frame_dir, 'frame_%05d.jpg' % i)
-        lane_f = os.path.join(lane_res_dir, 'lane_%05d.jpg' % i)
+        frame_f = os.path.join(frame_dir, 'frame_%05d.jpg' % time_flag)
+        lane_f = os.path.join(lane_res_dir, 'lane_%05d.jpg' % time_flag)
         cv2.imwrite(frame_f, frame)
         cv2.imwrite(lane_f, lane_res)
 
