@@ -18,6 +18,7 @@
 # ------------------------------------------------------------------------
 from picamera import PiCamera
 import picamera
+import picamera.array
 
 
 class CameraManager(object):
