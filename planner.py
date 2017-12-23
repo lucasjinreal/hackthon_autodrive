@@ -41,9 +41,9 @@ class Planner(object):
             return Plan(l_speed=0, r_speed=0, time=3)
         else:
             if time_flag % 20 == 0:
-                Plan(l_speed=50, r_speed=50, time=10)
+                return Plan(l_speed=50, r_speed=50, time=10)
             elif time_flag % 20 > 12:
-                Plan(l_speed=20, r_speed=50, time=10)
+                return Plan(l_speed=20, r_speed=50, time=10)
             elif time_flag:
-                Plan(l_speed=-50, r_speed=-50, time=10)
+                return Plan(l_speed=-50, r_speed=-50, time=10)
 
