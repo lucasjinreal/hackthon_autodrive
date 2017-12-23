@@ -57,5 +57,5 @@ class Executor(object):
         print('# Currently do the plan: l: {} r: {} time: {}'.format(l_speed,
                                                                      r_speed,
                                                                      hold_time))
-        time.sleep(hold_time)
+        # time.sleep(hold_time)
         self.all_plans.append(plan)
