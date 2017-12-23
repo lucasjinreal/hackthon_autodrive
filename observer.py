@@ -61,5 +61,6 @@ class Observer(object):
                                   is_obstacle=is_obstacle,
                                   obs_distance=obs_distance,
                                   lane_res_image=lane_res_image)
-        print('# Current observation: ', observation)
+        print('# Current observation: {}, {}, {}'.format(observation.current_l_speed, observation.current_r_speed,
+                                                         observation.is_obstacle))
         return observation
