@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-# file: lane_detector.py
+# file: camera_manager.py
 # author: JinTian
-# time: 23/12/2017 10:50 AM
+# time: 23/12/2017 11:19 AM
 # Copyright 2017 JinTian. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,12 +16,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ------------------------------------------------------------------------
-import os
-from src.lane_lines import annotate_image_array
-
-
-class LaneDetector(object):
-    def __init__(self):
-        pass
-
-    def detect(self):
+import pycamera

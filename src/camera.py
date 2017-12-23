@@ -16,4 +16,3 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     output_file = "./output_image.jpg"
     plt.imsave(output_file, image)
     break
-
