@@ -30,8 +30,8 @@ Plan = namedtuple('Plan', 'l_speed r_speed time')
 class Planner(object):
 
     def __init__(self):
-        self.plan_turn_l_little = Plan(20, 100, 2)
-        self.plan_turn_r_litter = Plan(100, 20, 2)
+        self.plan_turn_r_little = Plan(25, 80, 1.6)
+        self.plan_turn_l_little = Plan(80, 25, 1.6)
 
         self.plan_turn_l_big = Plan(50, 100, 3)
         self.plan_turn_r_big = Plan(100, 50, 3)
@@ -54,11 +54,11 @@ class Planner(object):
         cv2.imwrite(lane_f, lane_res)
 
     @staticmethod
-    def forward(speed=60, time=2):
+    def forward(speed=40, time=2):
         return Plan(l_speed=speed, r_speed=speed, time=time)
 
     @staticmethod
-    def backward(speed=-60, time=2):
+    def backward(speed=-40, time=2):
         return Plan(l_speed=speed, r_speed=speed, time=time)
 
     @staticmethod
@@ -74,13 +74,13 @@ class Planner(object):
             return Plan(l_speed=0, r_speed=0, time=3)
         else:
             if time_flag == 1:
-                return self.forward(time=2)
+                return self.forward(time=1.6)
             elif time_flag == 2:
                 return self.plan_turn_l_little
             elif time_flag == 3:
-                return self.plan_turn_r_big
+                return self.forward(time=6)
             elif time_flag == 4:
-                return self.backward(time=5)
+                return self.plan_turn_l_little
 
      # @staticmethod
      # def turn_left(speed=50, mode='slight'):
