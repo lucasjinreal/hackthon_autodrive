@@ -17,6 +17,7 @@
 # limitations under the License.
 # ------------------------------------------------------------------------
 from picamera import PiCamera
+import picamera
 
 
 class CameraManager(object):
