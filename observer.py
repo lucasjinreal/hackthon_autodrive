@@ -60,5 +60,5 @@ class Observer(object):
                                   is_obstacle=is_obstacle,
                                   obs_distance=obs_distance,
                                   lane_res_image=None)
-        print('-> Current observation: ', observation)
+        print('# Current observation: ', observation)
         return observation

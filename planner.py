@@ -40,10 +40,13 @@ class Planner(object):
             # if obstacle, stop 3 seconds
             return Plan(l_speed=0, r_speed=0, time=3)
         else:
-            if time_flag % 20 == 0:
+            if time_flag // 50 == 0:
+                print('*** forward 10')
                 return Plan(l_speed=50, r_speed=50, time=10)
-            elif time_flag % 20 > 12:
+            elif time_flag // 50 == 1:
+                print('*** left 10')
                 return Plan(l_speed=20, r_speed=50, time=10)
-            elif time_flag:
+            elif time_flag // 50 == 2:
+                print('*** backward 10')
                 return Plan(l_speed=-50, r_speed=-50, time=10)
 

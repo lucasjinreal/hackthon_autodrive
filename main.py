@@ -44,12 +44,11 @@ def fuck_run():
         i = 0
         while True:
             i += 1
+            print('\n')
             print('-> Make observations.')
             observations = observer.get_observations()
-
             print('-> Do next planning.')
             next_plan = planner.get_next_plan(time_flag=i, observations=observations)
-
             print('-> Execute plan.')
             executor.execute_plan(car, next_plan)
 
