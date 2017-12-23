@@ -53,7 +53,8 @@ class Observer(object):
         current_l_speed, current_r_speed = self.encoder.get_speed()
         is_obstacle = False
         obs_distance = 0
-        lane_res_image = self.lane_detector.detect(frame_input=frame_input)
+        # lane_res_image = self.lane_detector.detect(frame_input=frame_input)
+        lane_res_image = None
 
         observation = Observation(frame_input=frame_input,
                                   current_l_speed=current_l_speed,

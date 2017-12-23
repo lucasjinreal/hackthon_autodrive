@@ -30,19 +30,19 @@ Plan = namedtuple('Plan', 'l_speed r_speed time')
 class Planner(object):
 
     def __init__(self):
-        self.plan_turn_l_little = Plan(50, 100, 4)
-        self.plan_turn_r_litter = Plan(100, 50, 4)
+        self.plan_turn_l_little = Plan(20, 100, 2)
+        self.plan_turn_r_litter = Plan(100, 20, 2)
 
-        self.plan_turn_l_big = Plan(50, 100, 5)
-        self.plan_turn_r_big = Plan(100, 50, 5)
+        self.plan_turn_l_big = Plan(50, 100, 3)
+        self.plan_turn_r_big = Plan(100, 50, 3)
 
     @staticmethod
     def record_observation(time_flag, observation):
         frame = observation.frame_input
         lane_res = observation.lane_res_image
 
-        frame_dir = 'images/frames'
-        lane_res_dir = 'images/lanes'
+        frame_dir = './images/frames'
+        lane_res_dir = './images/lanes'
         if not os.path.exists(frame_dir):
             os.makedirs(frame_dir)
         if not os.path.exists(lane_res_dir):
@@ -54,11 +54,11 @@ class Planner(object):
         cv2.imwrite(lane_f, lane_res)
 
     @staticmethod
-    def forward(speed=80, time=2):
+    def forward(speed=60, time=2):
         return Plan(l_speed=speed, r_speed=speed, time=time)
 
     @staticmethod
-    def backward(speed=-80, time=2):
+    def backward(speed=-60, time=2):
         return Plan(l_speed=speed, r_speed=speed, time=time)
 
     @staticmethod
@@ -68,7 +68,7 @@ class Planner(object):
     def get_next_plan(self, time_flag, observation):
         assert isinstance(observation, Observation)
         # we need do the plan based on the observation
-        self.record_observation(time_flag, observation)
+        # self.record_observation(time_flag, observation)
         if observation.is_obstacle:
             # if obstacle, stop 3 seconds
             return Plan(l_speed=0, r_speed=0, time=3)
