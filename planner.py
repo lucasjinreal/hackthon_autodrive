@@ -68,7 +68,7 @@ class Planner(object):
     def get_next_plan(self, time_flag, observation):
         assert isinstance(observation, Observation)
         # we need do the plan based on the observation
-        # self.record_observation(time_flag, observation)
+        self.record_observation(time_flag, observation)
         if observation.is_obstacle:
             # if obstacle, stop 3 seconds
             return Plan(l_speed=0, r_speed=0, time=3)
