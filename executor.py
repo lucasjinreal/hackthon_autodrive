@@ -40,5 +40,5 @@ class Executor(object):
         car.set_duty_cycle(l_speed, r_speed)
         print('# Currently do the plan: l: {} r: {} time: {}'.format(l_speed,
                                                                      r_speed,
-                                                                     time))
+                                                                     hold_time))
         time.sleep(hold_time)
