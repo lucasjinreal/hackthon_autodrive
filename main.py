@@ -30,20 +30,22 @@ def test():
 
 def fuck_run():
     car = Car()
-    while True:
+    try:
+        while True:
+            print('forward 4 seconds')
+            car.set_speed(left_speed=10, right_speed=10)
+            time.sleep(4)
 
-        car.set_speed(left_speed=10, right_speed=10)
-        time.sleep(4)
+            print('left 4 seconds')
+            car.set_speed(left_speed=5, right_speed=15)
+            time.sleep(4)
 
-        car.set_speed(left_speed=5, right_speed=15)
-        time.sleep(4)
+            print('forward 10 seconds')
+            car.set_speed(left_speed=15, right_speed=15)
+            time.sleep(10)
 
-        car.set_speed(left_speed=15, right_speed=15)
-        time.sleep(10)
-
-
-
-
+    except KeyboardInterrupt:
+        car.__del__()
 
 if __name__ == '__main__':
     fuck_run()
