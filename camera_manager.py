@@ -25,7 +25,7 @@ class CameraManager(object):
 
     def __init__(self):
         self.camera = PiCamera()
-        self.camera.resolution = (340, 480)
+        self.camera.resolution = (352, 480)
         self.camera.start_preview()
         print('-> Camera init..')
 
