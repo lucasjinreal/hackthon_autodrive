@@ -49,4 +49,9 @@ class Planner(object):
             elif time_flag // 50 == 2:
                 print('*** backward 10')
                 return Plan(l_speed=-50, r_speed=-50, time=10)
+            else:
+                print(time_flag // 50)
+                print('*** forward 10')
+                return Plan(l_speed=50, r_speed=50, time=10)
+
 
