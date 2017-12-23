@@ -50,7 +50,7 @@ def fuck_run():
             print('-> Make observations.')
             observations = observer.get_observations()
             print('-> Do next planning.')
-            next_plan = planner.get_next_plan(time_flag=i, observations=observations)
+            next_plan = planner.get_next_plan(time_flag=i, observation=observations)
             print('-> Execute plan.')
             executor.execute_plan(car, next_plan)
 
