@@ -81,6 +81,10 @@ class Planner(object):
                 return self.forward(time=6)
             elif time_flag == 4:
                 return self.plan_turn_l_little
+            elif time_flag == 5:
+                return self.forward(1)
+            elif time_flag == 6:
+                return self.plan_turn_l_little
 
      # @staticmethod
      # def turn_left(speed=50, mode='slight'):

@@ -44,7 +44,6 @@ def fuck_run():
         i = 0
         while True:
             i += 1
-
             print('\n')
             print('current frame flag: ', i)
             print('-> Make observations.')
@@ -56,6 +55,10 @@ def fuck_run():
 
     except KeyboardInterrupt:
         car.__del__()
+    except Exception as e:
+        print(e)
+        executor.save_operation_to_local()
+    executor.go_back_home(car)
 
 if __name__ == '__main__':
     fuck_run()

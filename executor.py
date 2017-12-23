@@ -23,15 +23,27 @@ import os
 from src.car import Car
 from planner import Plan
 import time
+import pickle
 
 
 class Executor(object):
 
     def __init__(self):
-        pass
+        self.local_record_f = 'record.pkl'
+        self.all_plans = list()
 
-    @staticmethod
-    def execute_plan(car, plan):
+    def go_back_home(self, car):
+        with open(self.local_record_f, 'rb') as f:
+            all_plans = pickle.load(f)
+        if len(all_plans) >= 1:
+            for p in all_plans:
+                self.execute_plan(car, plan=p)
+
+    def save_operation_to_local(self):
+        with open(self.local_record_f, 'wb') as f:
+            pickle.dump(self.all_plans, f)
+
+    def execute_plan(self, car, plan):
         assert isinstance(car, Car), 'car must be car'
         assert isinstance(plan, Plan), 'plan must be plan'
         l_speed = plan.l_speed
@@ -42,3 +54,4 @@ class Executor(object):
                                                                      r_speed,
                                                                      hold_time))
         time.sleep(hold_time)
+        self.all_plans.append(plan)
