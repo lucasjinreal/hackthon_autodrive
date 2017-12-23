@@ -71,4 +71,21 @@ class Planner(object):
                 print('*** forward 10')
                 return Plan(l_speed=50, r_speed=50, time=10)
 
+     base_speed = 50
+     slight_speed = 70
+     rough_speed = 1.25 * slight_speed
+         
+     @staticmethod
+     def turn_left(mode='slight'):
+         if mode == 'slight':
+             return Plan(l_speed=base_speed, right_speed=slight_speed, time=5)
+         else:
+             return Plan(l_speed=base_speed, right_speed=rough_speed, time=5)
+
+     @staticmethod
+     def turn_right(mode='slight'):
+         if mode == 'slight':
+             return Plan(l_speed=slight_speed, right_speed=base_speed, time=5)
+         else:
+             return Plan(l_speed=rough_speed, right_speed=base_speed, time=5)
 
