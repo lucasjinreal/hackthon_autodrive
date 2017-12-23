@@ -25,3 +25,4 @@ class LaneDetector(object):
         pass
 
     def detect(self):
+        pass

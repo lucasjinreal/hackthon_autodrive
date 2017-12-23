@@ -19,3 +19,20 @@
 """
 this file is the main logic of auto-drive
 """
+from src.car import Car
+
+
+def test():
+
+    car = Car()
+    car.test()
+
+
+def fuck_run():
+    car = Car()
+    car.set_speed()
+
+
+
+if __name__ == '__main__':
+    test()
