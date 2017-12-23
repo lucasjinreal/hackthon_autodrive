@@ -54,11 +54,13 @@ def fuck_run():
             executor.execute_plan(car, next_plan)
 
     except KeyboardInterrupt:
-        car.__del__()
+        executor.save_operation_to_local()
     except Exception as e:
         print(e)
         executor.save_operation_to_local()
     executor.go_back_home(car)
+    car.__del__()
+
 
 if __name__ == '__main__':
     fuck_run()
