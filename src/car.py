@@ -25,7 +25,8 @@ class Car:
         GPIO.setwarnings(False)
 
         self.PWM_HZ = pwm_hz
-        if os.path.exists("./settings.txt"):
+        settings_f = os.path.join(os.path.abspath(__file__), 'settings.txt')
+        if os.path.exists(settings_f):
             setting = np.loadtxt("./settings.txt")
             self.halfL = setting[0][1] + setting[0][0] * 50
             self.fullL = setting[0][1] + setting[0][0] * 100
@@ -97,6 +98,7 @@ class Car:
             else:
                 self.right_duty = 0
                 self.rightspeed = 0
+
         get_left_duty(left_speed)
         get_right_duty(right_speed)
         self.set_duty_cycle(self.left_duty, self.right_duty)
@@ -146,26 +148,26 @@ class Car:
                         if c == "w":
                             forward = 140
                             self.set_speed(forward, forward)
-                            #~ self.set_duty_cycle(40,40)
+                            # ~ self.set_duty_cycle(40,40)
                             print("forward")
                         elif c == "s":
                             back = 30
                             self.set_speed(-back, -back)
-                            #~ self.set_duty_cycle(-50,-50)
+                            # ~ self.set_duty_cycle(-50,-50)
                             print("back")
                         elif c == "a":
                             left = 80
                             self.set_speed(left, -left)
-                            #~ self.set_duty_cycle(90,-90)
+                            # ~ self.set_duty_cycle(90,-90)
                             print("left")
                         elif c == "d":
                             right = 80
                             self.set_speed(-right, right)
-                            #~ self.set_duty_cycle(-50,50)
+                            # ~ self.set_duty_cycle(-50,50)
                             print("right")
                         elif c == "q":
                             self.set_speed(0, 0)
-                            #~ self.set_duty_cycle(0,0)
+                            # ~ self.set_duty_cycle(0,0)
                             print("stop")
 
         except KeyboardInterrupt:
