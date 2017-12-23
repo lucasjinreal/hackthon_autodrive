@@ -30,7 +30,11 @@ Plan = namedtuple('Plan', 'l_speed r_speed time')
 class Planner(object):
 
     def __init__(self):
-        pass
+        self.plan_turn_l_little = Plan(50, 100, 4)
+        self.plan_turn_r_litter = Plan(100, 50, 4)
+
+        self.plan_turn_l_big = Plan(50, 100, 5)
+        self.plan_turn_r_big = Plan(100, 50, 5)
 
     @staticmethod
     def record_observation(time_flag, observation):
@@ -72,10 +76,23 @@ class Planner(object):
             if time_flag == 1:
                 return self.forward(time=2)
             elif time_flag == 2:
-                return self.turn_left_litter()
+                return self.plan_turn_l_little
             elif time_flag == 3:
-                return self.forward(time=5)
+                return self.plan_turn_r_big
             elif time_flag == 4:
                 return self.backward(time=5)
 
+     # @staticmethod
+     # def turn_left(speed=50, mode='slight'):
+     #     if mode == 'slight':
+     #         return Plan(l_speed=speed, right_speed=70, time=5)
+     #     else:
+     #         return Plan(l_speed=speed, right_speed=70, time=5)
+     #
+     # @staticmethod
+     # def turn_right(mode='slight'):
+     #     if mode == 'slight':
+     #         return Plan(l_speed=slight_speed, right_speed=base_speed, time=5)
+     #     else:
+     #         return Plan(l_speed=rough_speed, right_speed=base_speed, time=5)
 
