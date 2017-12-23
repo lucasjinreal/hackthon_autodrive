@@ -47,7 +47,7 @@ class Planner(object):
         frame_f = os.path.join(frame_dir, 'frame_%05d.jpg' % i)
         lane_f = os.path.join(lane_res_dir, 'lane_%05d.jpg' % i)
         cv2.imwrite(frame_f, frame)
-        cv2.imwrite(lane_f, lane_f)
+        cv2.imwrite(lane_f, lane_res)
 
     def get_next_plan(self, time_flag, observation):
         assert isinstance(observation, Observation)
