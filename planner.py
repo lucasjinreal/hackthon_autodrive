@@ -49,6 +49,14 @@ class Planner(object):
         cv2.imwrite(frame_f, frame)
         cv2.imwrite(lane_f, lane_res)
 
+    @staticmethod
+    def forward(speed=100, time=2):
+        return Plan(l_speed=speed, r_speed=speed, time=time)
+
+    @staticmethod
+    def turn_left_litter():
+        return Plan(l_speed=50, r_speed=100, time=4)
+
     def get_next_plan(self, time_flag, observation):
         assert isinstance(observation, Observation)
         # we need do the plan based on the observation
@@ -57,18 +65,13 @@ class Planner(object):
             # if obstacle, stop 3 seconds
             return Plan(l_speed=0, r_speed=0, time=3)
         else:
-            if time_flag // 5000 == 0:
-                print('*** forward 10')
-                return Plan(l_speed=50, r_speed=50, time=10)
-            elif time_flag // 5000 == 1:
-                print('*** left 10')
-                return Plan(l_speed=20, r_speed=50, time=10)
-            elif time_flag // 5000 == 2:
-                print('*** backward 10')
-                return Plan(l_speed=-50, r_speed=-50, time=10)
-            else:
-                print(time_flag // 5000)
-                print('*** forward 10')
-                return Plan(l_speed=50, r_speed=50, time=10)
+            if time_flag == 0:
+                return self.forward(time=5)
+            elif time_flag == 1:
+                return self.turn_left_litter()
+            elif time_flag == 2:
+                return self.forward(time=5)
+            elif time_flag == 3:
+                return self.forward(time=5)
 
 
