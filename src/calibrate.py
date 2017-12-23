@@ -1,8 +1,8 @@
 #! /usr/bin/python
 # coding=utf-8
 
-from .car import Car
-from .encoder import Encoder
+from car import Car
+from encoder import Encoder
 from sklearn import linear_model
 import numpy as np
 import time
