@@ -24,5 +24,5 @@ class LaneDetector(object):
     def __init__(self):
         pass
 
-    def detect(self):
-        pass
+    def detect(self, frame_input):
+        lane_res = annotate_image_array(frame_input)
