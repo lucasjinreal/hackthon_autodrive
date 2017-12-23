@@ -40,7 +40,7 @@ def fuck_run():
     observer = Observer()
     executor = Executor()
 
-    frequent = 50
+    frequent = 1
 
     try:
         hold_times = 0
